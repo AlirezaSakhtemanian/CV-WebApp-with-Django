@@ -1,0 +1,274 @@
+.font-persian {
+    font-family: "B Nazanin", sans-serif;
+}
+
+.font-persian h1, .font-persian h2, .font-persian h3, .font-persian h4, .font-persian h5, .font-persian h6 {
+    font-family: "B Nazanin", sans-serif;
+}
+
+.font-persian a, .font-persian p {
+    font-size: 20px;
+}
+
+.font-persian .site-logo a {
+    font-size: 30px;
+}
+
+.site-logo a {
+    font-family: 'Dancing Script', cursive;
+    font-size: 30px;
+}
+
+.topspace {
+    margin-top: 150px;
+}
+
+/*##########################*/
+/* progress bars*/
+/*##########################*/
+.progress {
+    margin: 0 auto 25px auto;
+    border-radius: 10px;
+}
+
+.progress-bar-title {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.progress-block {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.progress-block .progress-bar-block {
+    display: block;
+    width: 40%;
+    margin: auto;
+}
+
+.progress-block .progress-bar-block .progress {
+    height: 12px;
+}
+
+@media (max-width: 767px) {
+    .progress-block {
+        display: block;
+    }
+
+    .progress-block .progress-bar-block {
+        width: 80%;
+    }
+}
+
+/*############################*/
+.project-title {
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.degree_title {
+    text-align: center;
+}
+
+.select_language {
+    border: none;
+    background: transparent;
+    color: #FFFFFFB2;
+    display: inline-block;
+    padding: 2px 5px;
+    margin-left: 13px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.site-mobile-menu .site-nav-wrap select {
+    padding: 2px 5px;
+    border: none;
+    background: transparent;
+    display: block;
+    position: relative;
+    font-size: 20px;
+    color: #212529;
+}
+
+.site-mobile-menu .site-nav-wrap select:hover {
+    color: #007bff;
+}
+
+.sticky-wrapper .site-navbar .site-menu > li > select:hover {
+    color: #fff !important;
+}
+
+.sticky-wrapper.is-sticky .site-navbar .site-menu > li > select {
+    color: #000 !important;
+}
+
+.sticky-wrapper.is-sticky .site-navbar .site-menu > li > select:hover {
+    color: #007bff !important;
+}
+
+.sticky-wrapper .site-navbar .site-logo a {
+    color: #FFFFFFB2;
+}
+
+.sticky-wrapper .site-navbar .site-logo a:hover {
+    color: #fff;
+}
+
+.sticky-wrapper.is-sticky .site-navbar .site-logo a {
+    color: #007bff;
+}
+
+.sticky-wrapper.is-sticky .site-navbar .site-logo a:hover {
+    color: #0252ab !important;
+}
+
+.nav-button {
+    border: none;
+    margin-right: -15px;
+}
+
+.nav-item {
+    margin: auto 10px;
+}
+
+/*#######################################*/
+.blog_image {
+    width: 100%;
+    display: flex;
+}
+
+.blog_image .img-center {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.justify-text {
+    text-align: justify;
+}
+
+.code_block {
+    padding: 0 15px;
+}
+
+.code_block pre code {
+    border-radius: 15px;
+}
+
+.code_block .hljs-copy-button {
+    transform: translateX(calc(100% + 2em));
+    top: 3em;
+    right: 2em;
+}
+
+.title_header {
+    margin-top: 40px;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.blog-content {
+    max-width: 80%;
+}
+
+#section-blog {
+    padding: 2.5em 2em !important;
+}
+
+#sidebar .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+}
+
+#sidebarWrap {
+    height: auto;
+    width: 210px;
+    float: right;
+    position: relative;
+    box-shadow: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+#sidebarWrap a {
+    border: none;
+}
+
+#sidebarWrap a .navbar-toggler-icon {
+    font-size: 13px;
+}
+
+#sidebarWrap .navbar-nav .nav-item .nav-link {
+    font-size: 15px;
+    font-weight: bold;
+    scroll-behavior: smooth;
+    transition: scroll ease 1s;
+}
+
+#sidebar {
+    width: 200px;
+    height: auto;
+    position: absolute;
+    margin-left: 20px;
+    border-left: 1px dotted black;
+}
+
+#sidebar.fixed {
+    position: fixed;
+    top: 100px;
+}
+
+@media (max-width: 1200px) {
+    #sidebarWrap {
+        width: 15%;
+    }
+}
+
+@media (max-width: 990px) {
+    .blog-content {
+        max-width: 100%;
+    }
+
+    #sidebar {
+        width: 50%;
+        position: fixed;
+        left: -20px;
+        z-index: 5000;
+        height: auto;
+        overflow-y: auto;
+        margin: 0;
+        padding: 0;
+    }
+
+    #sidebar .navbar-nav {
+        background-color: #8b8b8b;
+    }
+
+    #sidebar .nav-item {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #sidebar .nav-item .nav-link {
+        color: white;
+        width: 100%;
+        border-bottom: 1px dotted white;
+    }
+}
+
+.nav-link {
+    cursor: pointer;
+}
+
+/*############################################*/
+.header-pic {
+    background-image: url('/static/images/hero_2.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
