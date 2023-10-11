@@ -1,0 +1,28 @@
+{% load static %}
+{% load i18n %}
+
+{% for comment in comments %}
+    <li class="comment">
+        <div class="vcard bio">
+            <img src="{% static 'images/user_logo.png' %}" alt="Image" class="img-fluid">
+        </div>
+        <div class="comment-body">
+            <h3>{{ comment.name }} - {{ comment.email }}</h3>
+            <p>{{ comment.text }}</p>
+            <p><a class="reply" onclick="fillParentId({{ comment.id }})">{% trans 'Reply' %}</a></p>
+        </div>
+        {% for sub_comment in comment.blogcommentmodel_set.all %}
+            <ul class="children">
+                <li class="comment">
+                    <div class="vcard bio">
+                        <img src="{% static 'images/user_logo.png' %}" alt="Image placeholder">
+                    </div>
+                    <div class="comment-body">
+                        <h3>{{ sub_comment.name }} - {{ sub_comment.email }}</h3>
+                        <p>{{ sub_comment.text }}</p>
+                    </div>
+                </li>
+            </ul>
+        {% endfor %}
+    </li>
+{% endfor %}

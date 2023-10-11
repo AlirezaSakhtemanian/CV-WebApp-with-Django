@@ -1,0 +1,32 @@
+{% load static %}
+{% load i18n %}
+{% load poll_extras %}
+{% load thumbnail %}
+<header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light justify-content-between">
+            {% get_current_language as CURRENT_LANGUAGE %}
+            <h1 class="mb-0 site-logo">
+                <a href="/{{ CURRENT_LANGUAGE }}/" class="h2 mb-0 navbar-brand">Sakhtemanian</a>
+            </h1>
+            <a class="navbar-toggler nav-button" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+               aria-controls="navbarNavDropdown"
+               aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto site-menu main-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#comment-section">{% trans 'Comments' %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index-page' %}">{% trans 'Home' %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="goingBack()">{% trans 'Back' %}</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
