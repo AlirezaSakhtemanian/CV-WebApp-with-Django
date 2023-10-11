@@ -1,0 +1,54 @@
+{% load thumbnail %}
+{% load i18n %}
+{% load static %}
+{% load render_partial %}
+{% load poll_extras %}
+<header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light justify-content-between">
+            {% get_current_language as CURRENT_LANGUAGE %}
+            <h1 class="mb-0 site-logo">
+                <a href="/{{ CURRENT_LANGUAGE }}/" class="h2 mb-0 navbar-brand">Sakhtemanian</a>
+            </h1>
+            <a class="navbar-toggler nav-button" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+               aria-controls="navbarNavDropdown"
+               aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto site-menu main-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home-section">{% trans 'Home' %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about-section">{% trans 'About Me' %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#project-section">{% trans 'Projects' %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#blog-section">{% trans 'Blog' %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact-section">{% trans 'Contact' %}</a>
+                    </li>
+                    {% get_current_language as CURRENT_LANGUAGE %}
+                    {% get_available_languages as AVAILABLE_LANGUAGES %}
+                    {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                           aria-haspopup="true"
+                           aria-expanded="false">
+                            <span class="icon-language2"></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            {% for language in languages %}
+                                <a href="/{{ language.code }}/" class="dropdown-item">{{ language.name_translated }}</a>
+                            {% endfor %}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>

@@ -1,0 +1,306 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load i18n %}
+{% load static %}
+{% load render_partial %}
+{% load poll_extras %}
+{% block content %}
+    <div class="site-wrap">
+        {#header start#}
+        {% include 'home_module/components/header_component.html' %}
+        <div class="site-blocks-cover overlay header-pic" data-aos="fade" id="home-section">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-8 mt-lg-5 text-center">
+                        <h1 class="text-uppercase" data-aos="fade-up">{% trans 'Hello' %}</h1>
+                        <p class="mb-5 desc" data-aos="fade-up"
+                           data-aos-delay="100">{% trans 'I am Alireza Sakhtemanian. Wellcome to my site.' %}</p>
+                        <div data-aos="fade-up" data-aos-delay="100">
+                            <a href="#contact-section" class="btn smoothscroll btn-primary mr-2 mb-2">{% trans 'Get In Touch' %}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="#about-section" class="mouse smoothscroll">
+                <span class="mouse-icon">
+                    <span class="mouse-wheel"></span>
+                </span>
+            </a>
+        </div>
+        {#header end#}
+
+        {#about start#}
+        <div class="site-section cta-big-image" id="about-section">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12 text-center" data-aos="fade">
+                        <h2 class="section-title mb-3">{% trans 'About Me' %}</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="">
+                        {% thumbnail setting.picture "540x360" crop="center" quality=90 as im %}
+                            <img src="{{ im.url }}" alt="profile_photo" class="img-fluid">
+                        {% endthumbnail %}
+                    </div>
+                    <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
+                        <di>
+                            <h4>{% trans 'Summary :' %}</h4>
+                        </di>
+                        <div class="mb-4">
+                            <p class="justify-text">{{ setting.about_me_short_des }}</p>
+                        </div>
+                        <div class="mb-4">
+                            <ul class="list-unstyled success">
+                                <li>{% trans 'Age : ' %}{{ setting.age }}</li>
+                                <li>{% trans 'Email : ' %}{{ setting.email }}</li>
+                                <li>{% trans 'Phone : ' %}{{ setting.phone }}</li>
+                                <li>{% trans 'Address : ' %}{{ setting.address }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 mb-12 topspace" data-aos="fade-up" data-aos-delay="">
+                        <p class="justify-text">{{ setting.about_me_long_des }}</p>
+                    </div>
+                    <div class="progress-block" data-aos="fade-up" data-aos-delay="">
+                        {% for skill in skills %}
+                            <div class="progress-bar-block">
+                                <span class="progress-bar-title">{{ skill.title }}</span>
+                                <div class="progress">
+                                    <div id="progress_bar" class="progress-bar" role="progressbar"
+                                         aria-valuenow="{{ skill.skill_percent }}"
+                                         aria-valuemin="0" aria-valuemax="100">{{ skill.skill_percent }}%
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {#about end#}
+
+        {#project start#}
+        <section class="site-section bg-light" id="project-section">
+            <div class="container">
+                <div class="row mb-5 justify-content-center">
+                    <div class="col-md-7 text-center">
+                        <h2 class="section-title mb-3" data-aos="fade-up" data-aos-delay="">{% trans 'Projects' %}</h2>
+                        <p class="lead" data-aos="fade-up"
+                           data-aos-delay="100">{% trans 'Here I will share with you some of the projects I have done' %}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="">
+                        <div class="owl-carousel slide-one-item-alt">
+                            {% for project in projects %}
+                                {% thumbnail project.image "540x360" crop="center" quality=90 as im %}
+                                    <img src="{{ im.url }}" alt="{{ project.title }}" class="img-fluid">
+                                {% endthumbnail %}
+                            {% endfor %}
+                        </div>
+                        <div class="custom-direction">
+                            <a href="#" class="custom-prev">
+                                <span>
+                                    <span class="icon-keyboard_backspace"></span>
+                                </span>
+                            </a>
+                            <a href="#" class="custom-next">
+                                <span>
+                                    <span class="icon-keyboard_backspace"></span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
+                        <div class="owl-carousel slide-one-item-alt-text">
+                            {% for project in projects %}
+                                <div>
+                                    <p class="lead project-title">{{ project.title }}</p>
+                                    <p class="justify-text">{{ project.short_description }}</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {#project end#}
+
+        {#degree start#}
+        {% if degrees %}
+            <section class="site-section" id="degree-section">
+                <div class="container">
+                    <div class="row mb-5">
+                        <div class="col-12 text-center" data-aos="fade">
+                            <h2 class="section-title mb-3">{% trans 'Degrees' %}</h2>
+                        </div>
+                    </div>
+                    <div class="row align-items-stretch">
+                        {% for degree in degrees %}
+                            <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up">
+                                <div class="unit-4">
+                                    <div class="unit-4-icon mr-4">
+                                        {% thumbnail degree.image "350x200" crop="center" quality=90 as im %}
+                                            <img src="{{ im.url }}" alt="degree" class="img-fluid">
+                                        {% endthumbnail %}
+                                    </div>
+                                    <div class="degree_title">
+                                        <h3>{{ degree.title }}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+        {#degree end#}
+
+        {#blog start#}
+        <section class="site-section" id="blog-section">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12 text-center" data-aos="fade">
+                        <h2 class="section-title mb-3">{% trans 'Blog' %}</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for blog in blogs %}
+                        <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="">
+                            <div class="h-entry">
+                                <a href="{% url 'blog-content-page' slug=blog.slug %}">
+                                    {% thumbnail blog.image_main "540x360" crop="center" quality=90 as im %}
+                                        <img src="{{ im.url }}" alt="{{ blog.title }}" class="img-fluid">
+                                    {% endthumbnail %}
+                                </a>
+                                <h2 class="font-size-regular">
+                                    <a href="{% url 'blog-content-page' slug=blog.slug %}">
+                                        {{ blog.title }}
+                                    </a>
+                                </h2>
+                                <div class="meta mb-4">
+                                    {{ blog.date | show_jalali_date }}
+                                </div>
+                                <p class="justify-text">{{ blog.short_description }}</p>
+                                <p><a href="{% url 'blog-content-page' slug=blog.slug %}">{% trans 'Continue Reading...' %}</a></p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {#blog end#}
+
+        {#contact-me start#}
+        <section class="site-section bg-light" id="contact-section" data-aos="fade">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12 text-center">
+                        <h2 class="section-title mb-3">{% trans 'Contact Me' %}</h2>
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col-md-4 text-center">
+                        <p class="mb-4">
+                            <span class="icon-room d-block h4 text-primary"></span>
+                            <span>{{ setting.address }}</span>
+                        </p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <p class="mb-4">
+                            <span class="icon-phone d-block h4 text-primary"></span>
+                            <a href="#">{{ setting.phone }}</a>
+                        </p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <p class="mb-0">
+                            <span class="icon-mail_outline d-block h4 text-primary"></span>
+                            <a href="#">{{ setting.email }}</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mb-5">
+                        <form action="{% url 'index-page' %}" method="POST" class="p-5 bg-white">
+                            {% csrf_token %}
+                            <h2 class="h4 text-black mb-5">{% trans 'Contact Form' %}</h2>
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <label class="text-black" for="name">{% trans 'Name' %} :</label>
+                                    {{ form.name }}
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <label class="text-black" for="email">{% trans 'Email' %} :</label>
+                                    {{ form.email }}
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <label class="text-black" for="message">{% trans 'Message' %} :</label>
+                                    {{ form.message }}
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-primary btn-md text-white">{% trans 'Send Message' %}</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {#contact-me start#}
+
+        {#footer start#}
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-md-3 ml-auto">
+                                <h2 class="footer-heading mb-4">{% trans 'Quick Links' %}</h2>
+                                <ul class="list-unstyled">
+                                    <li><a href="#about-section" class="smoothscroll">{% trans 'About Me' %}</a></li>
+                                    <li><a href="#project-section" class="smoothscroll">{% trans 'Projects' %}</a></li>
+                                    {% if degrees %}
+                                        <li><a href="#degree-section" class="smoothscroll">{% trans 'Degrees' %}</a></li>
+                                    {% endif %}
+                                    <li><a href="#blog-section" class="smoothscroll">{% trans 'Blog' %}</a></li>
+                                    <li><a href="#contact-section" class="smoothscroll">{% trans 'Contact' %}</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <h2 class="footer-heading mb-4">{% trans 'Follow Me' %}</h2>
+                                <a href="{{ setting.telegram }}" class="pl-0 pr-3"><span class="icon-telegram"></span></a>
+                                <a href="{{ setting.linkedin }}" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+                                <a href="{{ setting.instagram }}" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+                                <a href="{{ setting.github }}" class="pl-3 pr-3"><span class="icon-github"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt-5 mt-5 text-center">
+                    <div class="col-md-12">
+                        <div class="border-top pt-5">
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;2023
+                                Alireza Sakhtemanian | This template is made with <i class="icon-heart text-danger"
+                                                                                     aria-hidden="true"></i> by <a
+                                    href="https://colorlib.com" target="_blank">Colorlib</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        {#footer end#}
+    </div>
+{% endblock %}
